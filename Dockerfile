@@ -1,4 +1,4 @@
-FROM containers.pkg.github.com/github/pages/pages-actions
+FROM jekyll/jekyll:pages
 
-# WORKDIR /github/workspace
-CMD ["/usr/local/bundle/bin/jekyll", "build"]
+ENV JEKYLL_DATA_DIR=/github/workspace
+CMD ["/usr/jekyll/bin/entrypoint", "jekyll", "build"]
