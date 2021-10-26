@@ -3,7 +3,3 @@ description: 'A simple GitHub Action for producing Jekyll build artifacts compat
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  # env:
-  #   # `id -u $(whoami)` in an action outputs this value and allows the workdir
-  #   # to be writable
-  #   JEKYLL_UID: "1001"
