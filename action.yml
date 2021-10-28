@@ -1,5 +1,22 @@
 name: 'Pages Jekyll'
 description: 'A simple GitHub Action for producing Jekyll build artifacts compatible with GitHub Pages'
+inputs:
+  source:
+    description: 'Directory where the source files reside.'
+    required: false
+    default: ./
+  destination:
+    description: 'Output directory of the build. Although it can be nested inside the source, it cannot be the same as the source directory.'
+    required: false
+    default: ./_site
 runs:
   using: 'docker'
   image: 'Dockerfile'
+  args:
+    - 'jekyll'
+    - 'build'
+    - '--source'
+    - ${{ inputs.source }}
+    - '--destination'
+    - ${{ inputs.destination }}
+

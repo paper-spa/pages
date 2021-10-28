@@ -1,0 +1,51 @@
+name: 'Test'
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'README.md'
+  pull_request:
+    paths-ignore:
+      - 'README.md'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.3.4
+
+      - name: Test Simple Project
+        uses: ./
+        with:
+          source: ./test_projects/simple
+          destination: ./test_projects/simple/_test
+          
+      - name: Simple-Save test results
+        run: |
+          GIT_BRANCH=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}
+          git checkout -b "${GIT_BRANCH}-test"
+          git checkout -b "${GIT_BRANCH}-test-simple"
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git add ${{ github.workspace }}/test_projects/simple/_test
+          git commit -m "Test results: $(date)"
+          git push -fu origin "${GIT_BRANCH}-test-simple"
+
+      - name: Test Mojombo Project
+        uses: ./
+        with:
+          source: ./test_projects/mojombo
+          destination: ./test_projects/mojombo/__site
+
+      - name: Mojombo-Save test results
+        run: |
+          GIT_BRANCH=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}
+          git checkout -b "${GIT_BRANCH}-test-mojombo"
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git add ${{ github.workspace }}/test_projects/mojombo/__site
+          git commit -m "Test results: $(date)"
+          git push -fu origin "${GIT_BRANCH}-test-mojombo"
+
