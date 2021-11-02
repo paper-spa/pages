@@ -83,7 +83,7 @@ jobs:
   test-electronjs:
     runs-on: ubuntu-latest
     env:
-      TEST_NAME: themes
+      TEST_NAME: electronjs
     steps:
       - uses: actions/checkout@v2.3.4
 
