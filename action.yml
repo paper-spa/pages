@@ -15,7 +15,7 @@ runs:
   args:
     - '--verbose'
     - '--source'
-    - /src/site/${{ inputs.source }}
+    - ${{ github.workspace }}/${{ inputs.source }}
     - '--destination'
-    - /src/site/${{ inputs.destination }}
+    - ${{ github.workspace }}/${{ inputs.destination }}
 
