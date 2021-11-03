@@ -13,9 +13,6 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - '--verbose'
-    - '--source'
-    - /src/site/${{ inputs.source }}
-    - '--destination'
-    - /src/site/${{ inputs.destination }}
+    - ${{ inputs.source }}
+    - ${{ inputs.destination }}
 

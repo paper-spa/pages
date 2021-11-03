@@ -2,4 +2,7 @@
 
 cd /src/gh/pages-gem
 
-jekyll build $@
+SOURCE_DIRECTORY=${GITHUB_WORKSPACE}/$INPUT_SOURCE
+DESTINATION_DIRECTORY=${GITHUB_WORKSPACE}/$INPUT_DESTINATION
+
+jekyll build --verbose --source $SOURCE_DIRECTORY --destination $DESTINATION_DIRECTORY
