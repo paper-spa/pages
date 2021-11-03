@@ -13,9 +13,6 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - '--verbose'
-    - '--source'
-    - ${{ github.workspace }}/${{ inputs.source }}
-    - '--destination'
-    - ${{ github.workspace }}/${{ inputs.destination }}
+    - ${{ inputs.source }}
+    - ${{ inputs.destination }}
 
