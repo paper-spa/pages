@@ -13,10 +13,9 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - 'jekyll'
-    - 'build'
+    - '--verbose'
     - '--source'
-    - ${{ inputs.source }}
+    - /src/site/${{ inputs.source }}
     - '--destination'
-    - ${{ inputs.destination }}
+    - /src/site/${{ inputs.destination }}
 

@@ -2,4 +2,7 @@
 # FROM ghcr.io/github/pages-gem:latest
 FROM ghcr.io/jriggins/pages-gem:latest
 
-CMD ["jekyll", "build"]
+COPY entrypoint.sh /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
+
