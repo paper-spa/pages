@@ -7,13 +7,16 @@
 #######################################################################################################
 
 set -o errexit
+set -o xtrace
 
 SOURCE_DIRECTORY=${GITHUB_WORKSPACE}/$INPUT_SOURCE
 DESTINATION_DIRECTORY=${GITHUB_WORKSPACE}/$INPUT_DESTINATION
 PAGES_GEM_HOME=/src/gh/pages-gem
 GITHUB_PAGES=$PAGES_GEM_HOME/bin/github-pages
-JEKYLL_GITHUB_TOKEN=$GITHUB_TOKEN
-PAGES_REPO_NWO=$GITHUB_REPOSITORY
+
+# Set environment variables required by supported plugins
+#export JEKYLL_GITHUB_TOKEN=$GITHUB_TOKEN
+export PAGES_REPO_NWO=$GITHUB_REPOSITORY
 
 if [ -z $INPUT_VERBOSE ]; then
   VERBOSE=''
