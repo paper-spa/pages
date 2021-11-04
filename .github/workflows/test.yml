@@ -23,6 +23,31 @@ jobs:
         with:
           source: ./test_projects/${{ env.TEST_NAME }}
           destination: ./test_projects/${{ env.TEST_NAME }}/_site
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Save test results
+        run: |
+          GIT_BRANCH=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}
+          git checkout -b "${GIT_BRANCH}-test-${TEST_NAME}"
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git add ${{ github.workspace }}/test_projects
+          git commit -m "Test results: $(date)" || true
+          git push -fu origin "${GIT_BRANCH}-test-${TEST_NAME}"
+
+  test-readme:
+    runs-on: ubuntu-latest
+    env:
+      TEST_NAME: readme
+    steps:
+      - uses: actions/checkout@v2.3.4
+
+      - name: Test ${{ env.TEST_NAME }} Project
+        uses: ./
+        with:
+          source: ./test_projects/${{ env.TEST_NAME }}
+          destination: ./test_projects/${{ env.TEST_NAME }}/_site
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Save test results
         run: |
@@ -46,6 +71,7 @@ jobs:
         with:
           source: ./test_projects/${{ env.TEST_NAME }}
           destination: ./test_projects/${{ env.TEST_NAME }}/_site
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Save test results
         run: |
@@ -69,6 +95,7 @@ jobs:
         with:
           source: ./test_projects/${{ env.TEST_NAME }}
           destination: ./test_projects/${{ env.TEST_NAME }}/_site
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Save test results
         run: |
