@@ -10,7 +10,7 @@ set -o errexit
 
 SOURCE_DIRECTORY=${GITHUB_WORKSPACE}/$INPUT_SOURCE
 DESTINATION_DIRECTORY=${GITHUB_WORKSPACE}/$INPUT_DESTINATION
-PAGES_GEM_HOME=/src/gh/pages-gem
+PAGES_GEM_HOME=$BUNDLE_APP_CONFIG
 GITHUB_PAGES=$PAGES_GEM_HOME/bin/github-pages
 
 # Set environment variables required by supported plugins
