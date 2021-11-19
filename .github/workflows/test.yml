@@ -16,7 +16,12 @@ jobs:
     env:
       TEST_NAME: simple
     steps:
-      - uses: actions/checkout@v2.3.4
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Render Action Metadata
+        run: |
+          ./bin/render_action_metadata Dockerfile > action.yml
 
       - name: Test ${{ env.TEST_NAME }} Project
         uses: ./
@@ -40,7 +45,12 @@ jobs:
     env:
       TEST_NAME: readme
     steps:
-      - uses: actions/checkout@v2.3.4
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Render Action Metadata
+        run: |
+          ./bin/render_action_metadata Dockerfile > action.yml
 
       - name: Test ${{ env.TEST_NAME }} Project
         uses: ./
@@ -64,7 +74,12 @@ jobs:
     env:
       TEST_NAME: mojombo
     steps:
-      - uses: actions/checkout@v2.3.4
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Render Action Metadata
+        run: |
+          ./bin/render_action_metadata Dockerfile > action.yml
 
       - name: Test ${{ env.TEST_NAME }} Project
         uses: ./
@@ -88,7 +103,12 @@ jobs:
     env:
       TEST_NAME: themes
     steps:
-      - uses: actions/checkout@v2.3.4
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Render Action Metadata
+        run: |
+          ./bin/render_action_metadata Dockerfile > action.yml
 
       - name: Test ${{ env.TEST_NAME }} Project
         uses: ./
@@ -112,7 +132,12 @@ jobs:
     env:
       TEST_NAME: jekyll-include-cache
     steps:
-      - uses: actions/checkout@v2.3.4
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Render Action Metadata
+        run: |
+          ./bin/render_action_metadata Dockerfile > action.yml
 
       - name: Test ${{ env.TEST_NAME }} Project
         uses: ./
