@@ -19,5 +19,6 @@ inputs:
     default: ${{ github.token }}
 runs:
   using: 'docker'
-  image: 'Dockerfile'
+  # image: 'docker://ghcr.io/paper-spa/pages:<%= pages_action_url %>'
+  image: '<%= pages_action_url %>'
 
