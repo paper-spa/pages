@@ -60,9 +60,6 @@ jobs:
         with:
           name: ${{ env.TEST_NAME }}
           path: ./test_projects/${{ env.TEST_NAME }}
-
-    env:
-      TEST_NAME: mojombo
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
