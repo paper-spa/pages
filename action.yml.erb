@@ -1,3 +1,4 @@
+# <%= nonce %>
 name: 'Pages Jekyll'
 description: 'A simple GitHub Action for producing Jekyll build artifacts compatible with GitHub Pages'
 inputs:
@@ -19,5 +20,5 @@ inputs:
     default: ${{ github.token }}
 runs:
   using: 'docker'
-  image: 'Dockerfile'
+  image: '<%= pages_action_url %>'
 

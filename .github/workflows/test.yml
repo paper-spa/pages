@@ -16,7 +16,12 @@ jobs:
     env:
       TEST_NAME: simple
     steps:
-      - uses: actions/checkout@v2.3.4
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Render Action Metadata
+        run: |
+          ./bin/render_action_metadata Dockerfile > action.yml
 
       - name: Test ${{ env.TEST_NAME }} Project
         uses: ./
@@ -26,21 +31,22 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Save test results
-        run: |
-          GIT_BRANCH=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}
-          git checkout -b "${GIT_BRANCH}-test-${TEST_NAME}"
-          git config --local user.name "github-actions[bot]"
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git add ${{ github.workspace }}/test_projects
-          git commit -m "Test results: $(date)" || true
-          git push -fu origin "${GIT_BRANCH}-test-${TEST_NAME}"
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ env.TEST_NAME }}
+          path: ./test_projects/${{ env.TEST_NAME }}
 
   test-readme:
     runs-on: ubuntu-latest
     env:
       TEST_NAME: readme
     steps:
-      - uses: actions/checkout@v2.3.4
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Render Action Metadata
+        run: |
+          ./bin/render_action_metadata Dockerfile > action.yml
 
       - name: Test ${{ env.TEST_NAME }} Project
         uses: ./
@@ -50,21 +56,22 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Save test results
-        run: |
-          GIT_BRANCH=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}
-          git checkout -b "${GIT_BRANCH}-test-${TEST_NAME}"
-          git config --local user.name "github-actions[bot]"
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git add ${{ github.workspace }}/test_projects
-          git commit -m "Test results: $(date)" || true
-          git push -fu origin "${GIT_BRANCH}-test-${TEST_NAME}"
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ env.TEST_NAME }}
+          path: ./test_projects/${{ env.TEST_NAME }}
 
   test-mojombo:
     runs-on: ubuntu-latest
     env:
       TEST_NAME: mojombo
     steps:
-      - uses: actions/checkout@v2.3.4
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Render Action Metadata
+        run: |
+          ./bin/render_action_metadata Dockerfile > action.yml
 
       - name: Test ${{ env.TEST_NAME }} Project
         uses: ./
@@ -74,21 +81,22 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Save test results
-        run: |
-          GIT_BRANCH=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}
-          git checkout -b "${GIT_BRANCH}-test-${TEST_NAME}"
-          git config --local user.name "github-actions[bot]"
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git add ${{ github.workspace }}/test_projects
-          git commit -m "Test results: $(date)" || true
-          git push -fu origin "${GIT_BRANCH}-test-${TEST_NAME}"
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ env.TEST_NAME }}
+          path: ./test_projects/${{ env.TEST_NAME }}
 
   test-themes:
     runs-on: ubuntu-latest
     env:
       TEST_NAME: themes
     steps:
-      - uses: actions/checkout@v2.3.4
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Render Action Metadata
+        run: |
+          ./bin/render_action_metadata Dockerfile > action.yml
 
       - name: Test ${{ env.TEST_NAME }} Project
         uses: ./
@@ -98,21 +106,22 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Save test results
-        run: |
-          GIT_BRANCH=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}
-          git checkout -b "${GIT_BRANCH}-test-${TEST_NAME}"
-          git config --local user.name "github-actions[bot]"
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git add ${{ github.workspace }}/test_projects
-          git commit -m "Test results: $(date)" || true
-          git push -fu origin "${GIT_BRANCH}-test-${TEST_NAME}"
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ env.TEST_NAME }}
+          path: ./test_projects/${{ env.TEST_NAME }}
 
   test-jekyll-include-cache:
     runs-on: ubuntu-latest
     env:
       TEST_NAME: jekyll-include-cache
     steps:
-      - uses: actions/checkout@v2.3.4
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Render Action Metadata
+        run: |
+          ./bin/render_action_metadata Dockerfile > action.yml
 
       - name: Test ${{ env.TEST_NAME }} Project
         uses: ./
@@ -122,11 +131,8 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Save test results
-        run: |
-          GIT_BRANCH=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}
-          git checkout -b "${GIT_BRANCH}-test-${TEST_NAME}"
-          git config --local user.name "github-actions[bot]"
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git add ${{ github.workspace }}/test_projects
-          git commit -m "Test results: $(date)" || true
-          git push -fu origin "${GIT_BRANCH}-test-${TEST_NAME}"
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ env.TEST_NAME }}
+          path: ./test_projects/${{ env.TEST_NAME }}
+
