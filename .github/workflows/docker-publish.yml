@@ -12,10 +12,11 @@ on:
     paths-ignore:
       - 'README.md'
     # Publish semver tags as releases. Allow for '-alpha'
-    # stage releases as well.
+    # and '-beta' stage releases as well.
     tags: 
       - 'v*.*.*'
       - 'v*.*.*-alpha'
+      - 'v*.*.*-beta'
   pull_request:
     branches: 
       - 'main'
