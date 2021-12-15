@@ -14,9 +14,9 @@ on:
     # Publish semver tags as releases. Allow for '-alpha'
     # and '-beta' stage releases as well.
     tags: 
-      - 'v*.*.*'
       - 'v*.*.*-alpha'
       - 'v*.*.*-beta'
+      - 'v*'
   pull_request:
     branches: 
       - 'main'
