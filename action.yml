@@ -1,4 +1,4 @@
-# 7147326a77256c4619d80c8f9b0b3aab
+# e2dab86a12640d892151a306ff034cbf
 name: 'Pages Jekyll'
 description: 'A simple GitHub Action for producing Jekyll build artifacts compatible with GitHub Pages'
 inputs:
@@ -20,5 +20,5 @@ inputs:
     default: ${{ github.token }}
 runs:
   using: 'docker'
-  image: 'docker://ghcr.io/paper-spa/pages:main'
+  image: 'docker://ghcr.io/paper-spa/pages:v1-beta'
 
